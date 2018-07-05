@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="manifest" href="/manifest.json">
+    <!-- Safari icon -->
+    <link rel="apple-touch-icon" sizes="72x72" href="./images/icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="96x96" href="./images/icons/icon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./images/icons/icon-144x144.png" />
+    <title>PWA Demo</title>
+    <script src="./js/test.js"></script>
+</head>
+
+<body>
+    <h3>PWA demo</h3>
+    <img src="./assets/library_check.png" alt="" style="max-width: 160px;">
+    <img src="./assets/library_in.png" alt="" style="max-width: 160px;">
+    <img src="./assets/library_out.png" alt="" style="max-width: 160px;"><br>
+    <img src="https://developers.google.cn/web/fundamentals/architecture/images/appshell.png" alt="" style="max-width: 500px;" />
+    <script type="text/javascript">
+        // 判断是否支持 Service Worker
+        if ('serviceWorker' in navigator) {
+            // 注册
+            navigator.serviceWorker.register('./sw-offline.js?v=20180801', {
+                scope: '/'
+            }).then(function(registraion) {
+                console.log('ServiceWorker registration successful with scope:', registraion.scope);
+            }).catch(function(err) {
+                console.log('ServiceWorker registration failed:', err);
+            });
+        } else {
+            console.log('您的浏览器不支持Service Worker!');
+        }
+    </script>
+</body>
+
+</html>
